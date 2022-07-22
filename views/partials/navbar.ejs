@@ -10,7 +10,7 @@
           <li class="nav-item">
             <a class="nav-link" href="/about.html">about</a>
           </li>
-  <!--  #static_page_end.
+  <!--  #static_page_begin.
            -->
 
           <% if(loggedIn) { %>
@@ -21,14 +21,36 @@
             <a class="nav-link" href="/users/logout">Log out</a>
           </li>
           <% } %>
-          <% if(!loggedIn) { %>
-          <li class="nav-item">
+        
+          <!-- <li class="nav-item">
             <a class="nav-link" href="/users/login">Login</a>
-          </li>
+          </li> -->
+
+         <!--#user_id_start  -->
+
+          
+          <% if (loggedIn) {%>
+            <li><a href="/users/<%= currentUser.id %>/view">Hello, <%= currentUser.username %></a></li>
+
+            <% } %>
+            <% if (loggedIn) {%>
+            <li><a href="/users/logout">Log out</a></li>
+            <% } else { %> 
+              <li class="nav-item">
+                <a class="nav-link" href="/users/login">Login</a>
+              </li>
+            <% } %>
+
+         <!--#user_id_start -->
           <li class="nav-item">
             <a class="nav-link" href="/users/register">New User</a>
           </li>
-          <% } %>
+ 
+
+
+
+
+
         </ul>
     </div>
   </nav>
