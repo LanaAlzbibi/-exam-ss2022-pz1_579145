@@ -3,12 +3,12 @@
 "use strict";
 
 // Require libraries
-const mongoose = require('mongoose');
-const passportLocalMongoose = require('passport-local-mongoose');
+const mongoose = require("mongoose");
+
 
 
 // Define schema
-const commentSchema = new mongoose.Schema({
+const commentSchema = mongoose.Schema({
     username: {
         type: String,
         required: true,
@@ -28,7 +28,7 @@ const commentSchema = new mongoose.Schema({
 
 
 
-
-module.exports = mongoose.model('comments',commentSchema);
+const comments = mongoose.model('comments',commentSchema);
+module.exports = comments;
 
 //#comment_model_end

@@ -17,6 +17,7 @@ const postController = require("./controllers/postController");
 const userController = require("./controllers/userController");
 const errorController = require("./controllers/errorController");
 
+const commentController = require("./controllers/commentController");
 // Require models
 const User = require("./models/User");
 
@@ -89,6 +90,10 @@ router.post("/posts/create", postController.create);
 //  #static_page_begin
 router.get("/about.html", postController.showAbout);
 // #static_page_end.
+
+
+router.post("/posts/createCommet", commentController.create);
+
 router.use(errorController.pageNotFoundError);
 app.use("/", router);
 
