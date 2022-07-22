@@ -5,6 +5,7 @@ const path = require("path");
 
 // Require models
 const BlogPost = require("../models/BlogPost");
+const comment = require('../models/comment.js');
 
 module.exports = {
   showPost: async (req, res) => {
@@ -20,6 +21,30 @@ module.exports = {
       content: blogpost.content,
     });
   },
+
+//#association_begin
+  showCommment: async (req, res) => {
+    comment
+    .find()
+    .exec()
+    .then((comment) => {
+      res.render("post", {
+        username: comment.username,
+        comment: comment.comment,
+        subheading:
+          "Posted by " +
+          comment.username +
+          " on " +
+          comment.datePosted.toDateString(),
+      })
+    })  .catch((error) => {
+      console.log(error.message);
+      return [];
+    });
+   
+  },
+//#association_end
+
   // #static_page_start.
   showAbout: (req, res) => {
     res.sendFile("../views/about.html", { root: __dirname });

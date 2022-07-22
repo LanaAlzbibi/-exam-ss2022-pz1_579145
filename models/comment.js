@@ -14,9 +14,12 @@ const commentSchema = mongoose.Schema({
         required: true,
     },
     datePosted: {
+        type: Date,
+        default: new Date()
+    },
+    comment: {
         type: String,
-        required: true,
-        timestamps: true 
+        required: true
     },
     parentBlogpost: {
         type: Schema.Types.ObjectId,

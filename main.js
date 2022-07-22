@@ -91,9 +91,16 @@ router.post("/posts/create", postController.create);
 router.get("/about.html", postController.showAbout);
 // #static_page_end.
 
+//#association_begin
+router.get("/posts/comments ", postController.showCreate);
 
-router.post("/posts/createCommet", commentController.create);
+//#association_end
 
+// #comment_controller_begin
+
+//#comment_controller_begin
+
+//router.post("/posts/createCommet", commentController.create);
 router.use(errorController.pageNotFoundError);
 app.use("/", router);
 
