@@ -19,5 +19,12 @@ const UserSchema = new mongoose.Schema({
 
 // Enable passport
 UserSchema.plugin(passportLocalMongoose);
+//#add_fields_ begin -->
+UserSchema.virtual("fullName").get(function () {
+    return `${this.name.first} ${this.name.last}`;
+});
+//#add_fields_ begin -->
+
+
 
 module.exports = mongoose.model('User',UserSchema);
